@@ -20,6 +20,9 @@ Grupo de Estudos para coletar tweets e processamento de dados
     - https://www.w3schools.com/python/module_requests.asp
   - [ ] Investigar na documentação da API do twitter como enviar parâmetros para coletar tweets
     - https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-all
+    ```
+      x = requests.get('https://api.twitter.com/2/users?     ids=2244994945&user.fields=created_at,description,entities,id,location,name,pinned_tweet_id,profile_image_url,protected,url,username,verified,withheld&expansions=pinned_tweet_id', headers=headers)
+    ```
 - [ ] Salvar os tweets (24-09-22)
   - [ ] MySQL
   - [ ] SQLite
