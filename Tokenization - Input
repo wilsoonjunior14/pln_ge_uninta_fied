@@ -1,0 +1,26 @@
+import nltk
+import requests
+import json
+from nltk.tokenize import word_tokenize
+
+
+headers = { 'Authorization' : 'Bearer AAAAAAAAAAAAAAAAAAAAAEd4gwEAAAAAycbDIptmlB6UuCa8%2FI1uRWelsC4%3Df2RCGCZzu0KtTA4ozeLWzYLjXFUTtB6Er9JKzC7MqckZTJ5Ofr'}
+
+print (headers)
+
+x = requests.get('https://api.twitter.com/2/tweets/search/recent?query=politica&tweet.fields=lang', headers=headers)
+
+
+
+for i in range(0, len(json.loads(x.text)["data"])):
+    tweet = json.loads(x.text)["data"][i]["text"]
+    
+    if json.loads(x.text)["data"][i]["lang"] != 'pt':
+        continue
+    
+    tokenization = word_tokenize(tweet)
+    
+    
+    
+    print ("\n")
+    print (tokenization)
