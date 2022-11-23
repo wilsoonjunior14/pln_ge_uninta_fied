@@ -1,0 +1,78 @@
+import nltk
+import requests
+import json
+from nltk.tokenize import word_tokenize 
+nltk.download('punkt')
+from nltk.corpus import stopwords
+from operator import contains
+from os import remove
+remove
+
+headers = { 'Authorization' : 'Bearer AAAAAAAAAAAAAAAAAAAAAEd4gwEAAAAAycbDIptmlB6UuCa8%2FI1uRWelsC4%3Df2RCGCZzu0KtTA4ozeLWzYLjXFUTtB6Er9JKzC7MqckZTJ5Ofr'}
+
+print (headers)
+
+x = requests.get('https://api.twitter.com/2/tweets/search/recent?query=politica&tweet.fields=lang', headers=headers)
+
+for i in range(0, len(json.loads(x.text)["data"])):
+    tweet = json.loads(x.text)["data"][i]["text"]
+    
+    if json.loads(x.text)["data"][i]["lang"] != 'pt':
+        continue
+    
+    tokenization = word_tokenize(tweet)
+    englishstop = stopwords.words("portuguese")
+    
+    lista = [word for word in tokenization if not word in englishstop]
+    
+    for w in lista:
+        if w == 'RT':
+            lista.remove(w)
+            
+    for w in lista:        
+        if w == '@':
+            lista.remove(w) 
+            
+    for w in lista:           
+        if w == ',':
+            lista.remove(w)
+            
+    for w in lista:
+        if w == 'https':        
+            lista.remove(w)
+     
+    for w in lista:              
+        if w == ':':
+            lista.remove(w)
+            
+    for w in lista:
+        if w == '.':
+            lista.remove(w)
+            
+    for w in lista:
+        if w == '-':
+            lista.remove(w)
+                                
+    for w in lista:
+        if w == '""':
+            lista.remove(w)
+                    
+        if '//' in w:
+            lista.remove(w)             
+    
+        if '...' in w:
+            lista.remove(w)
+    
+        if '\\' in w:
+            lista.remove(w)
+    
+        if '…' in w:
+            lista.remove(w)
+            
+        if '?' in w:
+            lista.remove(w)    
+    
+    print ("\n")
+    print (tokenization)
+    print ("\n")
+    print (lista)
