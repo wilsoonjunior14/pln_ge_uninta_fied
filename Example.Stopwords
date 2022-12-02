@@ -21,8 +21,8 @@ for i in range(0, len(json.loads(x.text)["data"])):
         continue
     
     tokenization = word_tokenize(tweet)
-    englishstop = stopwords.words("portuguese")
     
+    englishstop = stopwords.words("portuguese")
     lista = [word for word in tokenization if not word in englishstop]
     
     for w in lista:
@@ -43,8 +43,6 @@ for i in range(0, len(json.loads(x.text)["data"])):
                     
         if '//' in w:
             lista.remove(w)              
-    
-    print ("\n")
-    print (tokenization)
+            
     print ("\n")
     print (lista)
