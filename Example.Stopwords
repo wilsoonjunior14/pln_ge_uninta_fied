@@ -27,30 +27,7 @@ for i in range(0, len(json.loads(x.text)["data"])):
     englishstop = stopwords.words("portuguese")
     
     lista = [word for word in tokenization if not word in englishstop]
-    
-    for w in lista:
-        if w == 'RT':
-            lista.remove(w)
-            
-    for w in lista:        
-        if w == '@':
-            lista.remove(w) 
-            
-    for w in lista:           
-        if w == ',':
-            lista.remove(w)
-            
-    for w in lista:
-        if w == 'https':        
-            lista.remove(w)
      
-    for w in lista:              
-        if w == ':':
-            lista.remove(w)
-            
-    for w in lista:
-        if w == '.':
-            lista.remove(w)   
     
     print ("\n")
     print (tokenization)
