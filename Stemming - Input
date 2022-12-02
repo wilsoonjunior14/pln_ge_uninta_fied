@@ -82,10 +82,7 @@ tweet = json.loads(x.text)["data"][i]["text"]
     
     newwords = [stemmer.stem(word) for word in lista]
     
-    print ("\n")        
-    print (tokenization)
-    print ("\n")
-    print (lista)
+  
     print ("\n")
     print(newwords)
     print ("\n")
